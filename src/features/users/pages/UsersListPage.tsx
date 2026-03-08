@@ -1,10 +1,10 @@
+import { PageHeader } from '@/components/ui/PageHeader';
 import { he } from '@/i18n/he';
 
 export function UsersListPage() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900">{he.users.title}</h1>
-      <p className="mt-2 text-gray-500">placeholder</p>
+      <PageHeader title={he.users.title} />
     </div>
   );
 }

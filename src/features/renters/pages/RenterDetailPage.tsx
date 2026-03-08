@@ -1,12 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { PageHeader } from '@/components/ui/PageHeader';
+import { Button } from '@/components/ui/Button';
 import { he } from '@/i18n/he';
 
 export function RenterDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900">{he.renters.title}</h1>
-      <p className="mt-2 text-gray-500">placeholder — {id}</p>
+      <div className="mb-4">
+        <Button variant="ghost" size="sm" onClick={() => navigate('/renters')}>
+          {he.common.back}
+        </Button>
+      </div>
+      <PageHeader title={he.renters.title} />
+      <p className="text-gray-500">placeholder — {id}</p>
     </div>
   );
 }
