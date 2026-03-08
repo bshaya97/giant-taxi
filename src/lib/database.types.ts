@@ -33,6 +33,7 @@ export interface Database {
           role?: UserRole;
           is_active?: boolean;
         };
+        Relationships: [];
       };
       drivers: {
         Row: {
@@ -72,6 +73,7 @@ export interface Database {
           engagement_type?: DriverEngagementType;
           notes?: string | null;
         };
+        Relationships: [];
       };
       vehicles: {
         Row: {
@@ -108,6 +110,7 @@ export interface Database {
           status?: VehicleStatus;
           notes?: string | null;
         };
+        Relationships: [];
       };
       public_rights: {
         Row: {
@@ -129,6 +132,7 @@ export interface Database {
           status?: PublicRightStatus;
           notes?: string | null;
         };
+        Relationships: [];
       };
       public_right_renters: {
         Row: {
@@ -162,6 +166,7 @@ export interface Database {
           status?: RenterStatus;
           notes?: string | null;
         };
+        Relationships: [];
       };
       driver_vehicle_assignments: {
         Row: {
@@ -190,6 +195,7 @@ export interface Database {
           is_active?: boolean;
           notes?: string | null;
         };
+        Relationships: [];
       };
       public_right_vehicle_assignments: {
         Row: {
@@ -218,6 +224,7 @@ export interface Database {
           is_active?: boolean;
           notes?: string | null;
         };
+        Relationships: [];
       };
       public_right_renter_assignments: {
         Row: {
@@ -246,6 +253,7 @@ export interface Database {
           is_active?: boolean;
           notes?: string | null;
         };
+        Relationships: [];
       };
       charges: {
         Row: {
@@ -290,10 +298,11 @@ export interface Database {
           period_end?: string | null;
           notes?: string | null;
         };
+        Relationships: [];
       };
     };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Views: {};
+    Functions: {};
     Enums: {
       user_role: UserRole;
       driver_status: DriverStatus;
