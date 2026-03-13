@@ -7,6 +7,7 @@ import { SelectField } from '@/components/ui/SelectField';
 import { he } from '@/i18n/he';
 import { vehicleSchema, type VehicleFormData } from '../schemas/vehicleSchema';
 import type { Vehicle } from '../types';
+import { usePublicRights } from '@/features/public-rights/hooks/usePublicRights';
 
 type VehicleFormProps = {
   isOpen: boolean;
@@ -17,6 +18,7 @@ type VehicleFormProps = {
 };
 
 export function VehicleForm({ isOpen, onClose, onSubmit, isSubmitting, vehicle }: VehicleFormProps) {
+  const { data: publicRights = [] } = usePublicRights();
   const form = useForm<VehicleFormData>({
     resolver: zodResolver(vehicleSchema),
     mode: 'onBlur',
@@ -27,6 +29,7 @@ export function VehicleForm({ isOpen, onClose, onSubmit, isSubmitting, vehicle }
       if (vehicle) {
         form.reset({
           license_plate: vehicle.license_plate,
+          public_taxi_right_id: vehicle.public_taxi_right_id || '',
           make: vehicle.make || '',
           model: vehicle.model || '',
           year: vehicle.year ? String(vehicle.year) : '',
@@ -38,6 +41,7 @@ export function VehicleForm({ isOpen, onClose, onSubmit, isSubmitting, vehicle }
       } else {
         form.reset({
           license_plate: '',
+          public_taxi_right_id: '',
           make: '',
           model: '',
           year: '',
@@ -66,6 +70,16 @@ export function VehicleForm({ isOpen, onClose, onSubmit, isSubmitting, vehicle }
         label={he.vehicles.licensePlate}
         error={form.formState.errors.license_plate?.message}
         {...form.register('license_plate')}
+      />
+
+      <SelectField
+        label={he.vehicles.publicRight}
+        error={form.formState.errors.public_taxi_right_id?.message}
+        options={publicRights.map((pr) => ({
+          value: pr.id,
+          label: pr.right_number,
+        }))}
+        {...form.register('public_taxi_right_id')}
       />
 
       <FormField

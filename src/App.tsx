@@ -15,7 +15,6 @@ import { PublicRightsListPage } from '@/features/public-rights/pages/PublicRight
 import { PublicRightDetailPage } from '@/features/public-rights/pages/PublicRightDetailPage';
 import { RentersListPage } from '@/features/renters/pages/RentersListPage';
 import { RenterDetailPage } from '@/features/renters/pages/RenterDetailPage';
-import { AssignmentsPage } from '@/features/assignments/pages/AssignmentsPage';
 import { ChargesListPage } from '@/features/charges/pages/ChargesListPage';
 import { ChargeDetailPage } from '@/features/charges/pages/ChargeDetailPage';
 import { UsersListPage } from '@/features/users/pages/UsersListPage';
@@ -48,7 +47,6 @@ export default function App() {
                 <Route path="/public-rights/:id" element={<PublicRightDetailPage />} />
                 <Route path="/renters" element={<RentersListPage />} />
                 <Route path="/renters/:id" element={<RenterDetailPage />} />
-                <Route path="/assignments" element={<AssignmentsPage />} />
                 <Route path="/charges" element={<ChargesListPage />} />
                 <Route path="/charges/:id" element={<ChargeDetailPage />} />
 

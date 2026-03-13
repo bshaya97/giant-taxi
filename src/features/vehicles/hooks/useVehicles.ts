@@ -8,7 +8,7 @@ export function useVehicles() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('vehicles')
-        .select('*')
+        .select('*, public_rights(right_number)')
         .order('license_plate', { ascending: true });
 
       if (error) throw error;
@@ -23,7 +23,7 @@ export function useVehicle(id: string) {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('vehicles')
-        .select('*')
+        .select('*, public_rights(right_number)')
         .eq('id', id)
         .single();
 

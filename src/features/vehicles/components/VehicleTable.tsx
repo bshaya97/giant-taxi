@@ -48,6 +48,14 @@ export function VehicleTable({ data, isLoading, error, onEdit, onDelete }: Vehic
     <DataTable<Vehicle>
       columns={[
         { key: 'license_plate', header: he.vehicles.licensePlate },
+        {
+          key: 'public_right',
+          header: he.vehicles.publicRight,
+          cell: (row) => {
+            const publicRights = (row as any).public_rights;
+            return publicRights?.right_number || '—';
+          },
+        },
         { key: 'make', header: he.vehicles.make },
         { key: 'model', header: he.vehicles.model },
         { key: 'year', header: he.vehicles.year, cell: (row) => row.year || '—' },

@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 export const vehicleSchema = z.object({
   license_plate: z.string().min(1, 'מספר רכב הוא שדה חובה'),
+  public_taxi_right_id: z.string().min(1, 'זכות ציבורית היא שדה חובה'),
   make: z.string().optional().or(z.literal('')),
   model: z.string().optional().or(z.literal('')),
   year: z

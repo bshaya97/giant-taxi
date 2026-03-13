@@ -15,7 +15,6 @@ const navItems: NavItem[] = [
   { to: ROUTES.vehicles, label: he.nav.vehicles },
   { to: ROUTES.publicRights, label: he.nav.publicRights },
   { to: ROUTES.renters, label: he.nav.renters },
-  { to: ROUTES.assignments, label: he.nav.assignments },
   { to: ROUTES.charges, label: he.nav.charges },
   { to: ROUTES.users, label: he.nav.users, adminOnly: true },
 ];

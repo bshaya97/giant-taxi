@@ -40,6 +40,7 @@ export interface Database {
           id: string;
           full_name: string;
           id_number: string;
+          vehicle_id: string | null;
           phone: string | null;
           email: string | null;
           license_number: string | null;
@@ -54,6 +55,7 @@ export interface Database {
           id?: string;
           full_name: string;
           id_number: string;
+          vehicle_id?: string | null;
           phone?: string | null;
           email?: string | null;
           license_number?: string | null;
@@ -65,6 +67,7 @@ export interface Database {
         Update: {
           full_name?: string;
           id_number?: string;
+          vehicle_id?: string | null;
           phone?: string | null;
           email?: string | null;
           license_number?: string | null;
@@ -79,6 +82,7 @@ export interface Database {
         Row: {
           id: string;
           license_plate: string;
+          public_taxi_right_id: string | null;
           make: string | null;
           model: string | null;
           year: number | null;
@@ -92,6 +96,7 @@ export interface Database {
         Insert: {
           id?: string;
           license_plate: string;
+          public_taxi_right_id?: string | null;
           make?: string | null;
           model?: string | null;
           year?: number | null;
@@ -102,6 +107,7 @@ export interface Database {
         };
         Update: {
           license_plate?: string;
+          public_taxi_right_id?: string | null;
           make?: string | null;
           model?: string | null;
           year?: number | null;
@@ -183,35 +189,6 @@ export interface Database {
         Insert: {
           id?: string;
           driver_id: string;
-          vehicle_id: string;
-          start_date?: string;
-          end_date?: string | null;
-          is_active?: boolean;
-          notes?: string | null;
-          created_by?: string | null;
-        };
-        Update: {
-          end_date?: string | null;
-          is_active?: boolean;
-          notes?: string | null;
-        };
-        Relationships: [];
-      };
-      public_right_vehicle_assignments: {
-        Row: {
-          id: string;
-          public_right_id: string;
-          vehicle_id: string;
-          start_date: string;
-          end_date: string | null;
-          is_active: boolean;
-          notes: string | null;
-          created_at: string;
-          created_by: string | null;
-        };
-        Insert: {
-          id?: string;
-          public_right_id: string;
           vehicle_id: string;
           start_date?: string;
           end_date?: string | null;

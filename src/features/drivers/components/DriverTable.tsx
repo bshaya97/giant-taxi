@@ -17,6 +17,23 @@ type DriverTableProps = {
 const columns: Column<Driver>[] = [
   { key: 'full_name', header: he.drivers.fullName, sortable: true },
   { key: 'id_number', header: he.drivers.idNumber },
+  {
+    key: 'vehicle',
+    header: he.drivers.vehicle,
+    cell: (row) => {
+      const vehicles = (row as any).vehicles;
+      return vehicles?.license_plate || '—';
+    },
+  },
+  {
+    key: 'public_right',
+    header: he.vehicles.publicRight,
+    cell: (row) => {
+      const vehicles = (row as any).vehicles;
+      const publicRights = vehicles?.public_rights;
+      return publicRights?.right_number || '—';
+    },
+  },
   { key: 'phone', header: he.drivers.phone },
   {
     key: 'engagement_type',

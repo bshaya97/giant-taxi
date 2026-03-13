@@ -9,7 +9,6 @@ export const ROUTES = {
   publicRightDetail: '/public-rights/:id',
   renters: '/renters',
   renterDetail: '/renters/:id',
-  assignments: '/assignments',
   charges: '/charges',
   chargeDetail: '/charges/:id',
   users: '/users',

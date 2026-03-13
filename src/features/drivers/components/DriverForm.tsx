@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useMemo } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormDialog } from '@/components/ui/FormDialog';
 import { FormField } from '@/components/ui/FormField';
@@ -8,6 +8,7 @@ import { DateField } from '@/components/ui/DateField';
 import { he } from '@/i18n/he';
 import { driverSchema, type DriverFormData } from '../schemas/driverSchema';
 import type { Driver } from '../types';
+import { useVehicles } from '@/features/vehicles/hooks/useVehicles';
 
 type DriverFormProps = {
   isOpen: boolean;
@@ -28,10 +29,12 @@ const engagementOptions = [
 ];
 
 export function DriverForm({ isOpen, onClose, onSubmit, isSubmitting, driver }: DriverFormProps) {
+  const { data: vehicles = [] } = useVehicles();
   const {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<DriverFormData>({
     resolver: zodResolver(driverSchema),
@@ -41,12 +44,24 @@ export function DriverForm({ isOpen, onClose, onSubmit, isSubmitting, driver }: 
     },
   });
 
+  const selectedVehicleId = useWatch({ control, name: 'vehicle_id' });
+  const selectedVehicle = useMemo(
+    () => vehicles.find((v) => v.id === selectedVehicleId),
+    [selectedVehicleId, vehicles]
+  );
+  const linkedPublicRight = useMemo(() => {
+    if (!selectedVehicle) return null;
+    const publicRights = (selectedVehicle as any).public_rights;
+    return publicRights?.right_number || null;
+  }, [selectedVehicle]);
+
   useEffect(() => {
     if (isOpen) {
       if (driver) {
         reset({
           full_name: driver.full_name,
           id_number: driver.id_number,
+          vehicle_id: driver.vehicle_id ?? '',
           phone: driver.phone ?? '',
           email: driver.email ?? '',
           license_number: driver.license_number ?? '',
@@ -59,6 +74,7 @@ export function DriverForm({ isOpen, onClose, onSubmit, isSubmitting, driver }: 
         reset({
           full_name: '',
           id_number: '',
+          vehicle_id: '',
           phone: '',
           email: '',
           license_number: '',
@@ -94,6 +110,30 @@ export function DriverForm({ isOpen, onClose, onSubmit, isSubmitting, driver }: 
         dir="ltr"
         {...register('id_number')}
       />
+
+      <SelectField
+        id="vehicle_id"
+        label={he.drivers.vehicle}
+        error={errors.vehicle_id?.message}
+        options={[
+          { value: '', label: he.drivers.noVehicle },
+          ...vehicles.map((v) => ({
+            value: v.id,
+            label: v.license_plate,
+          })),
+        ]}
+        {...register('vehicle_id')}
+      />
+
+      {linkedPublicRight && (
+        <FormField
+          id="linked_public_right"
+          label={he.drivers.linkedPublicRight}
+          disabled
+          value={linkedPublicRight}
+        />
+      )}
+
       <FormField
         id="phone"
         label={he.drivers.phone}
