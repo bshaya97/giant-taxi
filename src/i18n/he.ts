@@ -125,5 +125,8 @@ export const he = {
     roleAdmin: 'מנהל',
     roleOffice: 'משרד',
     addUser: 'הוסף משתמש',
+    password: 'סיסמה',
+    statusActive: 'פעיל',
+    statusInactive: 'לא פעיל',
   },
 } as const;
