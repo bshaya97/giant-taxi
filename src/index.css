@@ -17,6 +17,7 @@
   --color-sidebar-active: #0f172a;
 
   --font-sans: "Segoe UI", "Arial", "Helvetica Neue", sans-serif;
+  --radius-card: 0.75rem;
 }
 
 body {

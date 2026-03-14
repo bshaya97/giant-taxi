@@ -3,6 +3,7 @@ import { LoadingState } from './LoadingState';
 import { EmptyState } from './EmptyState';
 import { ErrorState } from './ErrorState';
 import { he } from '@/i18n/he';
+import { ChevronUp, ChevronDown } from 'lucide-react';
 
 export type Column<T> = {
   key: string;
@@ -60,24 +61,32 @@ export function DataTable<T extends Record<string, unknown>>({
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200">
       <table className="w-full text-sm">
-        <thead className="bg-gray-50 text-gray-600">
+        <thead className="bg-gray-50 text-gray-500">
           <tr>
             {columns.map((col) => (
               <th
                 key={col.key}
-                className={`px-4 py-3 text-start font-medium ${
-                  col.sortable ? 'cursor-pointer select-none hover:text-gray-900' : ''
+                className={`px-4 py-3 text-start font-medium text-xs uppercase tracking-wide ${
+                  col.sortable ? 'cursor-pointer select-none hover:text-gray-700' : ''
                 }`}
                 onClick={col.sortable ? () => handleSort(col.key) : undefined}
               >
-                {col.header}
-                {sortKey === col.key && (
-                  <span className="me-1">{sortAsc ? ' ▲' : ' ▼'}</span>
-                )}
+                <div className="flex items-center gap-1">
+                  {col.header}
+                  {sortKey === col.key && (
+                    <span className="inline-flex">
+                      {sortAsc ? (
+                        <ChevronUp className="h-4 w-4" />
+                      ) : (
+                        <ChevronDown className="h-4 w-4" />
+                      )}
+                    </span>
+                  )}
+                </div>
               </th>
             ))}
             {actions && (
-              <th className="px-4 py-3 text-start font-medium">{he.common.actions}</th>
+              <th className="px-4 py-3 text-start font-medium text-xs uppercase tracking-wide">{he.common.actions}</th>
             )}
           </tr>
         </thead>
@@ -85,8 +94,8 @@ export function DataTable<T extends Record<string, unknown>>({
           {sortedData.map((row, idx) => (
             <tr
               key={idx}
-              className={`bg-white ${
-                onRowClick ? 'cursor-pointer hover:bg-gray-50' : ''
+              className={`bg-white transition-colors ${
+                onRowClick ? 'cursor-pointer hover:bg-gray-50' : 'hover:bg-gray-50'
               }`}
               onClick={onRowClick ? () => onRowClick(row) : undefined}
             >
