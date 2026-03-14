@@ -41,7 +41,6 @@ export function Sidebar() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) => {
-                  const Icon = item.icon;
                   return `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                     isActive
                       ? 'border-l-2 border-primary-400 bg-sidebar-active font-medium'
@@ -49,7 +48,7 @@ export function Sidebar() {
                   }`;
                 }}
               >
-                {({ isActive }) => {
+                {() => {
                   const Icon = item.icon;
                   return (
                     <>
@@ -80,7 +79,7 @@ export function Sidebar() {
                       }`
                     }
                   >
-                    {({ isActive }) => {
+                    {() => {
                       const Icon = item.icon;
                       return (
                         <>
