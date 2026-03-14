@@ -26,3 +26,10 @@ body {
   color: #1e293b;
   margin: 0;
 }
+
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+}
