@@ -26,6 +26,7 @@ export const he = {
     no: 'לא',
     back: 'חזרה',
     logout: 'התנתק',
+    menu: 'תפריט',
   },
   nav: {
     dashboard: 'לוח בקרה',

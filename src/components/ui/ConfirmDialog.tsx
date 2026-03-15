@@ -43,7 +43,7 @@ export function ConfirmDialog({
     <dialog
       ref={dialogRef}
       onClose={onCancel}
-      className="w-full max-w-sm rounded-xl bg-white p-6 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+      className="w-[calc(100%-2rem)] sm:w-full max-w-sm rounded-xl bg-white p-6 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
     >
       <div className="flex flex-col items-center text-center">
         <div className={`rounded-full ${iconBg} p-3 mb-4`}>

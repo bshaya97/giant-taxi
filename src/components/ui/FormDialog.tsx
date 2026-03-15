@@ -37,7 +37,7 @@ export function FormDialog({
     <dialog
       ref={dialogRef}
       onClose={onClose}
-      className="w-full max-w-lg rounded-xl bg-white p-0 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+      className="w-[calc(100%-2rem)] sm:w-full max-w-lg rounded-xl bg-white p-0 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
     >
       <form
         method="dialog"
@@ -58,7 +58,7 @@ export function FormDialog({
           </button>
         </div>
 
-        <div className="max-h-[60vh] overflow-y-auto px-6 py-4 space-y-4">
+        <div className="max-h-[70vh] overflow-y-auto px-6 py-4 space-y-4">
           {children}
         </div>
 

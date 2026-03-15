@@ -22,7 +22,7 @@ export function DashboardPage() {
   return (
     <div>
       <PageHeader title={he.dashboard.title} />
-      <p className="mb-8 text-gray-600">{he.dashboard.welcome}</p>
+      <p className="mb-6 sm:mb-8 text-gray-600">{he.dashboard.welcome}</p>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <MetricCard
@@ -97,7 +97,7 @@ function MetricCard({ title, value, isLoading, description, icon: Icon, color }:
   const config = colorConfigs[color];
 
   return (
-    <div className={`rounded-lg border border-gray-200 bg-white p-6 shadow-sm border-t-4 ${config.border}`}>
+    <div className={`rounded-lg border border-gray-200 bg-white p-4 sm:p-6 shadow-sm border-t-4 ${config.border}`}>
       <div className="flex items-start justify-between">
         <div>
           <h3 className="text-sm font-medium text-gray-600">{title}</h3>

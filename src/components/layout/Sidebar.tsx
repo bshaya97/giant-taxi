@@ -21,7 +21,11 @@ const navItems: NavItem[] = [
   { to: ROUTES.users, label: he.nav.users, icon: Settings, adminOnly: true },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export function Sidebar({ onClose }: SidebarProps) {
   const { isAdmin } = useAuth();
 
   const mainItems = navItems.filter((item) => !item.adminOnly);
@@ -40,8 +44,9 @@ export function Sidebar() {
               <NavLink
                 to={item.to}
                 end={item.to === '/'}
+                onClick={onClose}
                 className={({ isActive }) => {
-                  return `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                  return `flex items-center gap-3 rounded-lg px-3 py-2.5 sm:py-2 text-sm transition-colors ${
                     isActive
                       ? 'border-l-2 border-primary-400 bg-sidebar-active font-medium'
                       : 'hover:bg-sidebar-hover'
@@ -71,8 +76,9 @@ export function Sidebar() {
                   <NavLink
                     to={item.to}
                     end={item.to === '/'}
+                    onClick={onClose}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                      `flex items-center gap-3 rounded-lg px-3 py-2.5 sm:py-2 text-sm transition-colors ${
                         isActive
                           ? 'border-l-2 border-primary-400 bg-sidebar-active font-medium'
                           : 'hover:bg-sidebar-hover'

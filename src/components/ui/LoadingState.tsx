@@ -6,9 +6,9 @@ type LoadingStateProps = {
 
 export function LoadingState({ message = he.common.loading }: LoadingStateProps) {
   return (
-    <div className="flex items-center justify-center py-12">
+    <div className="flex items-center justify-center gap-3 py-12">
       <div className="h-6 w-6 animate-spin rounded-full border-2 border-gray-300 border-t-primary-600" />
-      <span className="me-3 text-sm text-gray-500">{message}</span>
+      <span className="text-sm text-gray-500">{message}</span>
     </div>
   );
 }

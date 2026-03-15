@@ -12,8 +12,8 @@ const variants = {
 } as const;
 
 const sizes = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-sm',
+  sm: 'px-3 py-1.5 text-sm min-h-[44px] sm:min-h-0',
+  md: 'px-4 py-2 text-sm min-h-[44px] sm:min-h-0',
 } as const;
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
