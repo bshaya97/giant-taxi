@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { he } from '@/i18n/he';
+import { ROUTES } from '@/config/routes';
 import {
   useTotalDrivers,
   useTotalVehicles,
@@ -31,6 +33,7 @@ export function DashboardPage() {
           isLoading={driversLoading}
           icon={Users}
           color="blue"
+          to={ROUTES.drivers}
         />
         <MetricCard
           title="כמות רכבים"
@@ -38,6 +41,7 @@ export function DashboardPage() {
           isLoading={vehiclesLoading}
           icon={Car}
           color="indigo"
+          to={ROUTES.vehicles}
         />
         <MetricCard
           title="כמות זכויות ציבוריות"
@@ -45,6 +49,7 @@ export function DashboardPage() {
           isLoading={publicRightsLoading}
           icon={BadgeCheck}
           color="violet"
+          to={ROUTES.publicRights}
         />
         <MetricCard
           title="זכויות ציבוריות זמינות"
@@ -53,6 +58,7 @@ export function DashboardPage() {
           icon={CheckCircle}
           color="green"
           description="זמינות להשכרה"
+          to={ROUTES.publicRights}
         />
         <MetricCard
           title="רכבים משויכים לנהגים"
@@ -61,6 +67,7 @@ export function DashboardPage() {
           icon={Link2}
           color="amber"
           description="שיוכים פעילים"
+          to={ROUTES.vehicles}
         />
         <MetricCard
           title="חיובים פתוחים"
@@ -69,6 +76,7 @@ export function DashboardPage() {
           icon={CreditCard}
           color="red"
           description="ממתינים לתשלום"
+          to={ROUTES.charges}
         />
       </div>
     </div>
@@ -82,6 +90,7 @@ type MetricCardProps = {
   description?: string;
   icon: React.ComponentType<{ className?: string }>;
   color: 'blue' | 'indigo' | 'violet' | 'green' | 'amber' | 'red';
+  to: string;
 };
 
 const colorConfigs = {
@@ -93,25 +102,27 @@ const colorConfigs = {
   red: { bg: 'bg-red-50', text: 'text-red-600', border: 'border-t-red-500' },
 };
 
-function MetricCard({ title, value, isLoading, description, icon: Icon, color }: MetricCardProps) {
+function MetricCard({ title, value, isLoading, description, icon: Icon, color, to }: MetricCardProps) {
   const config = colorConfigs[color];
 
   return (
-    <div className={`rounded-lg border border-gray-200 bg-white p-4 sm:p-6 shadow-sm border-t-4 ${config.border}`}>
-      <div className="flex items-start justify-between">
-        <div>
-          <h3 className="text-sm font-medium text-gray-600">{title}</h3>
-          {isLoading ? (
-            <div className="mt-2 h-8 w-16 animate-pulse rounded bg-gray-200" />
-          ) : (
-            <p className="mt-2 text-3xl font-bold text-gray-900">{value}</p>
-          )}
-          {description && <p className="mt-2 text-xs text-gray-500">{description}</p>}
-        </div>
-        <div className={`rounded-lg p-3 ${config.bg}`}>
-          <Icon className={`h-6 w-6 ${config.text}`} />
+    <Link to={to} className="block">
+      <div className={`rounded-lg border border-gray-200 bg-white p-4 sm:p-6 shadow-sm border-t-4 transition-shadow hover:shadow-md cursor-pointer ${config.border}`}>
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-sm font-medium text-gray-600">{title}</h3>
+            {isLoading ? (
+              <div className="mt-2 h-8 w-16 animate-pulse rounded bg-gray-200" />
+            ) : (
+              <p className="mt-2 text-3xl font-bold text-gray-900">{value}</p>
+            )}
+            {description && <p className="mt-2 text-xs text-gray-500">{description}</p>}
+          </div>
+          <div className={`rounded-lg p-3 ${config.bg}`}>
+            <Icon className={`h-6 w-6 ${config.text}`} />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
