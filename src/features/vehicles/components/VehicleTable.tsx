@@ -73,7 +73,7 @@ export function VehicleTable({ data, isLoading, error, onEdit, onDelete }: Vehic
       error={error}
       actions={(row) => (
         <div className="flex gap-2">
-          <Button size="sm" variant="secondary" onClick={() => onEdit(row)}>
+          <Button size="sm" variant="primary"  onClick={() => onEdit(row)}>
             {he.common.edit}
           </Button>
           {isAdmin && (

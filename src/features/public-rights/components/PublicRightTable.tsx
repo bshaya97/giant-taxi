@@ -69,11 +69,11 @@ export function PublicRightTable({
       onRowClick={(publicRight) => navigate(`/public-rights/${publicRight.id}`)}
       actions={(publicRight) => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(publicRight)}>
+          <Button variant="primary" size="sm" onClick={() => onEdit(publicRight)}>
             {he.common.edit}
           </Button>
           {isAdmin && (
-            <Button variant="ghost" size="sm" onClick={() => onDelete(publicRight)}>
+            <Button variant="danger" size="sm" onClick={() => onDelete(publicRight)}>
               {he.common.delete}
             </Button>
           )}

@@ -68,11 +68,11 @@ export function DriverTable({ data, isLoading, error, onEdit, onDelete }: Driver
       onRowClick={(driver) => navigate(`/drivers/${driver.id}`)}
       actions={(driver) => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(driver)}>
+          <Button variant="primary" size="sm" onClick={() => onEdit(driver)}>
             {he.common.edit}
           </Button>
           {isAdmin && (
-            <Button variant="ghost" size="sm" onClick={() => onDelete(driver)}>
+            <Button variant="danger" size="sm" onClick={() => onDelete(driver)}>
               {he.common.delete}
             </Button>
           )}

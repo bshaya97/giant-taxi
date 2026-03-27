@@ -41,10 +41,10 @@ export function UserTable({ data, isLoading, error, onEdit, onDelete }: UserTabl
       error={error}
       actions={(user) => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(user)}>
+          <Button variant="primary" size="sm" onClick={() => onEdit(user)}>
             {he.common.edit}
           </Button>
-          <Button variant="ghost" size="sm" onClick={() => onDelete(user)}>
+          <Button variant="danger" size="sm" onClick={() => onDelete(user)}>
             {he.common.delete}
           </Button>
         </div>

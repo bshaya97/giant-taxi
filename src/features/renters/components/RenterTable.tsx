@@ -44,11 +44,11 @@ export function RenterTable({ data, isLoading, error, onEdit, onDelete }: Renter
       onRowClick={(renter) => navigate(`/renters/${renter.id}`)}
       actions={(renter) => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(renter)}>
+          <Button variant="primary" size="sm" onClick={() => onEdit(renter)}>
             {he.common.edit}
           </Button>
           {isAdmin && (
-            <Button variant="ghost" size="sm" onClick={() => onDelete(renter)}>
+            <Button variant="danger" size="sm" onClick={() => onDelete(renter)}>
               {he.common.delete}
             </Button>
           )}

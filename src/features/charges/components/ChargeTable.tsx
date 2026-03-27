@@ -79,11 +79,11 @@ export function ChargeTable({ data, isLoading, error, onEdit, onDelete }: Charge
       onRowClick={(charge) => navigate(`/charges/${charge.id}`)}
       actions={(charge) => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(charge)}>
+          <Button variant="primary" size="sm" onClick={() => onEdit(charge)}>
             {he.common.edit}
           </Button>
           {isAdmin && (
-            <Button variant="ghost" size="sm" onClick={() => onDelete(charge)}>
+            <Button variant="danger" size="sm" onClick={() => onDelete(charge)}>
               {he.common.delete}
             </Button>
           )}
